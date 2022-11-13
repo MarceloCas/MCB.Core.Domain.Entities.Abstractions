@@ -12,7 +12,7 @@ public class AuditableInfoValueObjectTest
     {
         // Arrange
         var createdBy = "marcelo.castelo@outlook.com";
-        var createdAt = DateTimeOffset.UtcNow;
+        var createdAt = DateTime.UtcNow;
         var sourcePlatform = "AppDemo";
 
         // Act
@@ -37,9 +37,9 @@ public class AuditableInfoValueObjectTest
     {
         // Arrange
         var createdBy = "marcelo.castelo@outlook.com";
-        var createdAt = DateTimeOffset.UtcNow.AddDays(-1);
+        var createdAt = DateTime.UtcNow.AddDays(-1);
         var updatedBy = "marcelo.castelo@github.com";
-        var updatedAt = DateTimeOffset.UtcNow;
+        var updatedAt = DateTime.UtcNow;
         var sourcePlatform = "AppDemo";
 
         // Act

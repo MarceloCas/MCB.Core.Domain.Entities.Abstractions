@@ -8,6 +8,6 @@ public interface IDomainEntity
     Guid Id { get; }
     Guid TenantId { get; }
     AuditableInfoValueObject AuditableInfo { get; }
-    DateTimeOffset RegistryVersion { get; }
+    DateTime RegistryVersion { get; }
     ValidationInfoValueObject ValidationInfo { get; }
 }

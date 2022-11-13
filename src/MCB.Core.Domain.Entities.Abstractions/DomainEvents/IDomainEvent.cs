@@ -3,7 +3,7 @@
 public interface IDomainEvent
 {
     Guid Id { get; }
-    DateTimeOffset Timestamp { get; }
+    DateTime Timestamp { get; }
     string DomainEventType { get; }
     IAggregationRoot AggregationRoot { get; }
 }
