@@ -3,10 +3,10 @@
 public interface IDomainEvent
 {
     Guid Id { get; }
-    public Guid TenantId { get; set; }
+    public Guid TenantId { get; }
     DateTime Timestamp { get; }
-    string ExecutionUser { get; set; }
-    string SourcePlatform { get; set; }
+    string ExecutionUser { get; }
+    string SourcePlatform { get; }
     string DomainEventType { get; }
     IAggregationRoot AggregationRoot { get; }
 }
