@@ -1,6 +1,6 @@
 ﻿namespace MCB.Core.Domain.Entities.Abstractions.ValueObjects;
 
-public struct AuditableInfoValueObject
+public readonly struct AuditableInfoValueObject
 {
     // Properties
     public string CreatedBy { get; }

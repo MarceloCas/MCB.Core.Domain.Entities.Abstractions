@@ -18,7 +18,9 @@ public class ValidationInfoValueObjectTest
         validationInfoValueObject.ValidationMessageCollection.Should().NotBeNull();
         validationInfoValueObject.ValidationMessageCollection.Should().HaveCount(0);
         validationInfoValueObject.HasValidationMessage.Should().BeFalse();
-        validationInfoValueObject.HasError.Should().BeFalse();
+        validationInfoValueObject.HasInformationMessages.Should().BeFalse();
+        validationInfoValueObject.HasWariningMessages.Should().BeFalse();
+        validationInfoValueObject.HasErrorMessages.Should().BeFalse();
         validationInfoValueObject.IsValid.Should().BeTrue();
     }
 
@@ -36,7 +38,9 @@ public class ValidationInfoValueObjectTest
         validationInfoValueObject.ValidationMessageCollection.Should().NotBeNull();
         validationInfoValueObject.ValidationMessageCollection.Should().HaveCount(2);
         validationInfoValueObject.HasValidationMessage.Should().BeTrue();
-        validationInfoValueObject.HasError.Should().BeFalse();
+        validationInfoValueObject.HasInformationMessages.Should().BeTrue();
+        validationInfoValueObject.HasWariningMessages.Should().BeTrue();
+        validationInfoValueObject.HasErrorMessages.Should().BeFalse();
         validationInfoValueObject.IsValid.Should().BeTrue();
 
         validationInfoValueObject.ValidationMessageCollection.ToArray()[0].ValidationMessageType.Should().Be(ValidationMessageType.Information);
@@ -63,7 +67,9 @@ public class ValidationInfoValueObjectTest
         validationInfoValueObject.ValidationMessageCollection.Should().NotBeNull();
         validationInfoValueObject.ValidationMessageCollection.Should().HaveCount(3);
         validationInfoValueObject.HasValidationMessage.Should().BeTrue();
-        validationInfoValueObject.HasError.Should().BeTrue();
+        validationInfoValueObject.HasInformationMessages.Should().BeTrue();
+        validationInfoValueObject.HasWariningMessages.Should().BeTrue();
+        validationInfoValueObject.HasErrorMessages.Should().BeTrue();
         validationInfoValueObject.IsValid.Should().BeFalse();
 
         validationInfoValueObject.ValidationMessageCollection.ToArray()[0].ValidationMessageType.Should().Be(ValidationMessageType.Information);
@@ -87,14 +93,16 @@ public class ValidationInfoValueObjectTest
         validationInfoValueObject.AddInformationValidationMessage("INFO_1", "INFORMATION");
 
         // Act
-        var clone = (ValidationInfoValueObject)validationInfoValueObject.Clone();
+        var clone = validationInfoValueObject.Clone();
         clone.AddWarningValidationMessage("WARN_1", "WARNING");
 
         // Assert
         validationInfoValueObject.ValidationMessageCollection.Should().NotBeNull();
         validationInfoValueObject.ValidationMessageCollection.Should().HaveCount(1);
         validationInfoValueObject.HasValidationMessage.Should().BeTrue();
-        validationInfoValueObject.HasError.Should().BeFalse();
+        validationInfoValueObject.HasInformationMessages.Should().BeTrue();
+        validationInfoValueObject.HasWariningMessages.Should().BeFalse();
+        validationInfoValueObject.HasErrorMessages.Should().BeFalse();
         validationInfoValueObject.IsValid.Should().BeTrue();
 
         validationInfoValueObject.ValidationMessageCollection.ToArray()[0].ValidationMessageType.Should().Be(ValidationMessageType.Information);
@@ -104,7 +112,9 @@ public class ValidationInfoValueObjectTest
         clone.ValidationMessageCollection.Should().NotBeNull();
         clone.ValidationMessageCollection.Should().HaveCount(2);
         clone.HasValidationMessage.Should().BeTrue();
-        clone.HasError.Should().BeFalse();
+        clone.HasValidationMessage.Should().BeTrue();
+        clone.HasInformationMessages.Should().BeTrue();
+        clone.HasErrorMessages.Should().BeFalse();
         clone.IsValid.Should().BeTrue();
 
         clone.ValidationMessageCollection.ToArray()[0].ValidationMessageType.Should().Be(ValidationMessageType.Information);

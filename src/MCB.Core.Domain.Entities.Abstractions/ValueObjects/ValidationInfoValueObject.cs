@@ -3,21 +3,27 @@ using MCB.Core.Infra.CrossCutting.DesignPatterns.Validator.Abstractions.Models;
 
 namespace MCB.Core.Domain.Entities.Abstractions.ValueObjects;
 
-public struct ValidationInfoValueObject
+public readonly struct ValidationInfoValueObject
 {
     // Fields
     private readonly List<ValidationMessage> _validationMessageCollection;
 
     // Properties
     public IEnumerable<ValidationMessage> ValidationMessageCollection => _validationMessageCollection.AsReadOnly();
-    public bool HasValidationMessage => _validationMessageCollection.Count > 0;
-    public bool HasError => _validationMessageCollection.Any(q => q.ValidationMessageType == ValidationMessageType.Error);
-    public bool IsValid => !HasValidationMessage || !HasError;
+    public IEnumerable<ValidationMessage> InformationValidationMessageCollection => _validationMessageCollection.Where(q => q.ValidationMessageType == ValidationMessageType.Information);
+    public IEnumerable<ValidationMessage> WarningValidationMessageCollection => _validationMessageCollection.Where(q => q.ValidationMessageType == ValidationMessageType.Warning);
+    public IEnumerable<ValidationMessage> ErrorValidationMessageCollection => _validationMessageCollection.Where(q => q.ValidationMessageType == ValidationMessageType.Error);
+
+    public bool HasValidationMessage => _validationMessageCollection.Any();
+    public bool HasInformationMessages => InformationValidationMessageCollection.Any();
+    public bool HasWariningMessages => WarningValidationMessageCollection.Any();
+    public bool HasErrorMessages => ErrorValidationMessageCollection.Any();
+    public bool IsValid => !HasValidationMessage || !HasErrorMessages;
 
     // Constructors
-    private ValidationInfoValueObject(List<ValidationMessage> validationMessageCollection)
+    private ValidationInfoValueObject(IEnumerable<ValidationMessage> validationMessageCollection)
     {
-        _validationMessageCollection = validationMessageCollection;
+        _validationMessageCollection = validationMessageCollection.ToList();
     }
     public ValidationInfoValueObject()
     {
@@ -41,6 +47,6 @@ public struct ValidationInfoValueObject
 
     public ValidationInfoValueObject Clone()
     {
-        return new ValidationInfoValueObject(_validationMessageCollection.ToList());
+        return new ValidationInfoValueObject(ValidationMessageCollection);
     }
 }
