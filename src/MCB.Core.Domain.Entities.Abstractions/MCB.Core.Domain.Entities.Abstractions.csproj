@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="MCB.Core.Infra.CrossCutting.DesignPatterns.Validator.Abstractions" Version="0.14.0-alpha" />
+	  <PackageReference Include="MCB.Core.Infra.CrossCutting.DesignPatterns.Validator.Abstractions" Version="0.15.0-alpha" />
 	</ItemGroup>
 
 </Project>
