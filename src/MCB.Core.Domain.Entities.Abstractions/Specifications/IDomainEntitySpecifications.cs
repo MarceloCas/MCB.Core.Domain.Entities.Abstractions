@@ -20,8 +20,8 @@ public interface IDomainEntitySpecifications
     bool LastUpdatedAtShouldRequired(DateTime? lastUpdatedAt);
     bool LastUpdatedAtShouldValid(DateTime? lastUpdatedAt, DateTime createdAt);
 
-    bool LastUpdatedByShouldRequired(string lastUpdatedBy);
-    bool LastUpdatedByShouldValid(string lastUpdatedBy);
+    bool LastUpdatedByShouldRequired(string? lastUpdatedBy);
+    bool LastUpdatedByShouldValid(string? lastUpdatedBy);
 
     bool LastSourcePlatformShouldRequired(string lastSourcePlatform);
     bool LastSourcePlatformShouldValid(string lastSourcePlatform);
