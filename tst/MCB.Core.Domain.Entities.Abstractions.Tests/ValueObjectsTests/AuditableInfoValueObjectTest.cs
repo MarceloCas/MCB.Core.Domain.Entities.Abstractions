@@ -14,6 +14,7 @@ public class AuditableInfoValueObjectTest
         var createdBy = "marcelo.castelo@outlook.com";
         var createdAt = DateTime.UtcNow;
         var sourcePlatform = "AppDemo";
+        var lastCorrelationId = Guid.NewGuid();
 
         // Act
         var auditableInfoValueObject = new AuditableInfoValueObject(
@@ -21,7 +22,8 @@ public class AuditableInfoValueObjectTest
             createdAt,
             lastUpdatedBy: null,
             lastUpdatedAt: null,
-            sourcePlatform
+            sourcePlatform,
+            lastCorrelationId
         );
 
         // Assert
@@ -30,6 +32,7 @@ public class AuditableInfoValueObjectTest
         auditableInfoValueObject.LastUpdatedBy.Should().BeNull();
         auditableInfoValueObject.LastUpdatedAt.Should().BeNull();
         auditableInfoValueObject.LastSourcePlatform.Should().Be(sourcePlatform);
+        auditableInfoValueObject.LastCorrelationId.Should().Be(lastCorrelationId);
     }
 
     [Fact]
@@ -41,6 +44,7 @@ public class AuditableInfoValueObjectTest
         var updatedBy = "marcelo.castelo@github.com";
         var updatedAt = DateTime.UtcNow;
         var sourcePlatform = "AppDemo";
+        var lastCorrelationId = Guid.NewGuid();
 
         // Act
         var auditableInfoValueObject = new AuditableInfoValueObject(
@@ -48,7 +52,8 @@ public class AuditableInfoValueObjectTest
             createdAt,
             updatedBy,
             updatedAt,
-            sourcePlatform
+            sourcePlatform, 
+            lastCorrelationId
         );
 
         // Assert
@@ -57,5 +62,6 @@ public class AuditableInfoValueObjectTest
         auditableInfoValueObject.LastUpdatedBy.Should().Be(updatedBy);
         auditableInfoValueObject.LastUpdatedAt.Should().Be(updatedAt);
         auditableInfoValueObject.LastSourcePlatform.Should().Be(sourcePlatform);
+        auditableInfoValueObject.LastCorrelationId.Should().Be(lastCorrelationId);
     }
 }

@@ -8,6 +8,7 @@ public readonly struct AuditableInfoValueObject
     public string? LastUpdatedBy { get; }
     public DateTime? LastUpdatedAt { get; }
     public string LastSourcePlatform { get; }
+    public Guid LastCorrelationId { get; }
 
     // Constructors
     public AuditableInfoValueObject(
@@ -15,7 +16,8 @@ public readonly struct AuditableInfoValueObject
         DateTime createdAt,
         string? lastUpdatedBy,
         DateTime? lastUpdatedAt,
-        string lastSourcePlatform
+        string lastSourcePlatform,
+        Guid lastCorrelationId
     )
     {
         CreatedBy = createdBy;
@@ -23,5 +25,6 @@ public readonly struct AuditableInfoValueObject
         LastUpdatedBy = lastUpdatedBy;
         LastUpdatedAt = lastUpdatedAt;
         LastSourcePlatform = lastSourcePlatform;
+        LastCorrelationId = lastCorrelationId;
     }
 }
