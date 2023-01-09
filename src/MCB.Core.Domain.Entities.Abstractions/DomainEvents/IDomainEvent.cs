@@ -1,6 +1,7 @@
 ﻿namespace MCB.Core.Domain.Entities.Abstractions.DomainEvents;
 public interface IDomainEvent
 {
+    Guid CorrelationId { get; }
     Guid Id { get; }
     public Guid TenantId { get; }
     DateTime Timestamp { get; }
