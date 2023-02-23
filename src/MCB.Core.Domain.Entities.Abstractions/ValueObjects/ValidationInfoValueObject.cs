@@ -3,7 +3,7 @@ using MCB.Core.Infra.CrossCutting.DesignPatterns.Validator.Abstractions.Models;
 
 namespace MCB.Core.Domain.Entities.Abstractions.ValueObjects;
 
-public readonly struct ValidationInfoValueObject
+public readonly record struct ValidationInfoValueObject
 {
     // Fields
     private readonly List<ValidationMessage> _validationMessageCollection;
