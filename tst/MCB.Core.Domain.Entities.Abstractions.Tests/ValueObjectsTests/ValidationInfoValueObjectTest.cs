@@ -93,7 +93,7 @@ public class ValidationInfoValueObjectTest
         validationInfoValueObject.AddInformationValidationMessage("INFO_1", "INFORMATION");
 
         // Act
-        var clone = validationInfoValueObject.Clone();
+        var clone = validationInfoValueObject.DeepClone();
         clone.AddWarningValidationMessage("WARN_1", "WARNING");
 
         // Assert

@@ -45,7 +45,7 @@ public readonly record struct ValidationInfoValueObject
     public void AddWarningValidationMessage(string code, string description) => AddValidationMessage(ValidationMessageType.Warning, code, description);
     public void AddErrorValidationMessage(string code, string description) => AddValidationMessage(ValidationMessageType.Error, code, description);
 
-    public ValidationInfoValueObject Clone()
+    public ValidationInfoValueObject DeepClone()
     {
         return new ValidationInfoValueObject(ValidationMessageCollection);
     }
